@@ -27,6 +27,8 @@ function editBook(id, newTitle, newAuthor){
 function deleteBook(id){
     books=books.filter((book)=>book.id!==id);
     renderBooks();
+    document.getElementById("form").reset();
+    document.getElementById("id").value="";
 }
 
 
