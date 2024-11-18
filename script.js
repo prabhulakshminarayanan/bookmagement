@@ -1,4 +1,8 @@
-let books=[];
+let books=JSON.parse(localStorage.getItem('books'))||[];
+
+function saveToLocalStorage(){
+    localStorage.setItem('books', JSON.stringify(books));
+}
 
 function addBook(title,author){
     const book={
@@ -7,6 +11,7 @@ function addBook(title,author){
         author: author
     }
     books.push(book);
+    saveToLocalStorage();
     renderBooks();
     
 }
@@ -19,6 +24,7 @@ function editBook(id, newTitle, newAuthor){
             book.author=newAuthor;
         }
     });
+    saveToLocalStorage();
     renderBooks();
    
    
@@ -26,6 +32,7 @@ function editBook(id, newTitle, newAuthor){
 
 function deleteBook(id){
     books=books.filter((book)=>book.id!==id);
+    saveToLocalStorage();
     renderBooks();
     document.getElementById("form").reset();
     document.getElementById("id").value="";
@@ -78,3 +85,4 @@ function renderBooks(){
 }
 
 document.getElementById("form").addEventListener("submit", handleFormSubmit);
+renderBooks();
