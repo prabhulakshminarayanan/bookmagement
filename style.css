@@ -75,3 +75,16 @@ th{
     background-color: black;
     color:orange;
 }
+
+td button {
+    background-color: orange;
+    color:black;
+    border:none;
+    padding:15px;
+    border: radius 10px;cursor:pointer;
+
+}
+
+td button.delete{
+    background-color: red;
+}
